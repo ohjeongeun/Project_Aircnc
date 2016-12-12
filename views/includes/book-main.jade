@@ -1,0 +1,26 @@
+h3 등록된 숙소 보기
+ul.tasks
+
+.no-task 
+  .alert.alert-info Task가 없습니다.
+script#task-template(type='text/template').
+  <li class='task <%= doneStr %>' data-id='<%= id %>'>
+    <span class='check'>
+      <i class='fa fa-check fa-lg'></i>
+    </span>
+    <span class='content'><%=content %></span>
+    <% if (category) { %>
+      <span class='label label-default category'> 
+        <%= category %>
+      </span>
+    <% } %>
+    <span class='priority p<%= priority %>'>
+      <%= (priority === 3) ? "집전체" : ((priority === 1) ? "개인실": "다인실") %>
+    </span>
+    <a href='#' class='remove'><i class='fa fa-trash-o'></i></a>
+  </li>
+      
+script.
+  $(function() {
+    var host = new TaskController();    
+  });
